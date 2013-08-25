@@ -1,2 +1,2 @@
-alert("mobile");
+//alert("mobile");
 $(".result").html("Mobile View");

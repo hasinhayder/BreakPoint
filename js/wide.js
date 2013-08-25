@@ -1,2 +1,2 @@
-alert("wide");
+//alert("wide");
 $(".result").html("Wide View");

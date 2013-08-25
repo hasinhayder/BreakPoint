@@ -1,2 +1,2 @@
-alert("super wide");
+//alert("super wide");
 $(".result").html("Superwide View");
