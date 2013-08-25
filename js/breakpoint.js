@@ -12,7 +12,7 @@
  * BreakPoint
  * By: Hasin Hayder
  * License: MIT License
- * Date: 23th August, 2013
+ * Date: 23rd August, 2013
  */
 
  ;(function($){
