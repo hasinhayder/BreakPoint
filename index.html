@@ -35,12 +35,13 @@
 				superwide:{min:1200,load:true},
 			}
 		});
+		$(window).bind("breakpoint",function(e){
+			if(console)
+			console.log(e.breakpoint);
+		});
 	});
 
-	$(window).bind("breakpoint",function(e){
-		if(console)
-		console.log(e.breakpoint);
-	})
+	
 	</script>
 </body>
 </html>
