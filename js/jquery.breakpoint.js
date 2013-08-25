@@ -56,4 +56,3 @@
  	}
 
  })(jQuery);
- $(window).trigger("resize");
