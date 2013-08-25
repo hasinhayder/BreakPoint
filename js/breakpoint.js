@@ -38,7 +38,7 @@
  				if(min==undefined) min = 0;
  				if(max==undefined) max = 9999;
  				// console.log(min+":"+max+":"+w);
- 				if(w>=min && w<max){
+ 				if(w>=min && w<=max){
  					// console.log("firing");
  					var evnt = jQuery.Event("breakpoint");
  					evnt.breakpoint = i;
@@ -50,5 +50,6 @@
  			}
  		}));
  	}
- 	$(window).trigger("resize");
+
  })(jQuery);
+ $(window).trigger("resize");

@@ -1,1 +1,2 @@
-alert("loaded");
+alert("default");
+$(".result").html("Default View");
