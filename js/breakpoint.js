@@ -1,0 +1,54 @@
+/*
+ * jQuery throttle / debounce - v1.1 - 3/7/2010
+ * http://benalman.com/projects/jquery-throttle-debounce-plugin/
+ * 
+ * Copyright (c) 2010 "Cowboy" Ben Alman
+ * Dual licensed under the MIT and GPL licenses.
+ * http://benalman.com/about/license/
+ */
+ ;(function(b,c){var $=b.jQuery||b.Cowboy||(b.Cowboy={}),a;$.throttle=a=function(e,f,j,i){var h,d=0;if(typeof f!=="boolean"){i=j;j=f;f=c}function g(){var o=this,m=+new Date()-d,n=arguments;function l(){d=+new Date();j.apply(o,n)}function k(){h=c}if(i&&!h){l()}h&&clearTimeout(h);if(i===c&&m>e){l()}else{if(f!==true){h=setTimeout(i?k:l,i===c?e-m:e)}}}if($.guid){g.guid=j.guid=j.guid||$.guid++}return g};$.debounce=function(d,e,f){return f===c?a(d,e,false):a(d,f,e!==false)}})(this);
+
+/*
+ * BreakPoint
+ * By: Hasin Hayder
+ * License: MIT License
+ * Date: 23th August, 2013
+ */
+
+ ;(function($){
+ 	var defaults = {
+ 		prefix:"js/",
+ 		breakpoints:{
+ 			default:{min:1000,
+ 				max:9999,
+ 				load:false
+ 			}
+ 		}
+ 	}
+ 	var opts;
+ 	$.BreakPoint = function(options){
+ 		opts = $.extend(defaults,options);
+ 		$(window)
+ 		.resize($.debounce( 250, false, function(e){
+ 			var w = $(window).width();
+ 			for(i in opts.breakpoints){
+ 				var bp = opts.breakpoints[i];
+ 				var min = bp.min;
+ 				var max = bp.max;
+ 				if(min==undefined) min = 0;
+ 				if(max==undefined) max = 9999;
+ 				// console.log(min+":"+max+":"+w);
+ 				if(w>=min && w<max){
+ 					// console.log("firing");
+ 					var evnt = jQuery.Event("breakpoint");
+ 					evnt.breakpoint = i;
+ 					$(window).trigger(evnt);
+
+ 					var file = opts.prefix + i + ".js";
+ 					if(bp.load) $.getScript(file);
+ 				}
+ 			}
+ 		}));
+ 	}
+ 	$(window).trigger("resize");
+ })(jQuery);

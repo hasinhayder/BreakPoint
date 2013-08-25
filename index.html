@@ -1,0 +1,23 @@
+<html>
+<head>
+	<title></title>
+	<script src="js/jquery-1.10.2.js"></script>
+	<script src="js/breakpoint.js"></script>
+</head>
+<body>
+	<script>
+	$(document).ready(function(){
+		$.BreakPoint({
+			breakpoints:{
+				nano:{max:1000,load:true},
+				default:{
+					min:1000,max:1100, load:true
+				},
+				wide:{min:1100,max:1200},
+				superwide:{min:1200},
+			}
+		});
+	})
+	</script>
+</body>
+</html>
