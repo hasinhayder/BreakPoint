@@ -31,7 +31,7 @@
  		$(window).resize($.debounce( 250, false, function(e){
  			$.fn.bpCallBack();
  		}));
- 		$.fn.bpCallBack(); //for window load
+ 		$.fn.bpCallBack(); //for first time window load
  	}
 
  	$.fn.bpCallBack = function(){
