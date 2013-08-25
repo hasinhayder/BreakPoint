@@ -28,27 +28,31 @@
  	var opts;
  	$.BreakPoint = function(options){
  		opts = $.extend(defaults,options);
- 		$(window)
- 		.resize($.debounce( 250, false, function(e){
- 			var w = $(window).width();
- 			for(i in opts.breakpoints){
- 				var bp = opts.breakpoints[i];
- 				var min = bp.min;
- 				var max = bp.max;
- 				if(min==undefined) min = 0;
- 				if(max==undefined) max = 9999;
- 				// console.log(min+":"+max+":"+w);
- 				if(w>=min && w<=max){
- 					// console.log("firing");
- 					var evnt = jQuery.Event("breakpoint");
- 					evnt.breakpoint = i;
- 					$(window).trigger(evnt);
-
- 					var file = opts.prefix + i + ".js";
- 					if(bp.load) $.getScript(file);
- 				}
- 			}
+ 		$(window).resize($.debounce( 250, false, function(e){
+ 			$.fn.bpCallBack();
  		}));
+ 		$.fn.bpCallBack(); //for window load
+ 	}
+
+ 	$.fn.bpCallBack = function(){
+ 		var w = $(window).width();
+ 		for(i in opts.breakpoints){
+ 			var bp = opts.breakpoints[i];
+ 			var min = bp.min;
+ 			var max = bp.max;
+ 			if(min==undefined) min = 0;
+ 			if(max==undefined) max = 9999;
+ 			// console.log(min+":"+max+":"+w);
+ 			if(w>=min && w<=max){
+ 				// console.log("firing");
+ 				var evnt = jQuery.Event("breakpoint");
+ 				evnt.breakpoint = i;
+ 				$(window).trigger(evnt);
+
+ 				var file = opts.prefix + i + ".js";
+ 				if(bp.load) $.getScript(file);
+ 			}
+ 		}
  	}
 
  })(jQuery);
